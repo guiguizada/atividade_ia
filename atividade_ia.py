@@ -2,6 +2,7 @@ import pygame.display as display
 import pygame.event as pygame_event
 import pygame.draw as draw
 import pygame
+import math
 
 
 pygame.init()
@@ -69,10 +70,18 @@ def create_graph():
         graph.append([])
         for j in range(array_size):
             graph[i].append(j+array_size*i)
+            adjacency_matrix.append([])
     print(graph)
-    for i in range(array_size):
-        for j in range(array_size):
-            print(i)<
+    for i in range(array_size*array_size):
+        for j in range(array_size*array_size-i-1):
+            for k in range(array_size):
+                for l in range(array_size):
+                    if k-(math.floor(i/array_size))<=1 or abs(l-(j-i*array_size))<=1:
+                        adjacency_matrix.append(math.sqrt(abs(l-(j-i*array_size))+abs(k-(math.floor(i/array_size)))))
+                    else:
+                        adjacency_matrix.append(None)
+    print(adjacency_matrix)
+
             
 
 
